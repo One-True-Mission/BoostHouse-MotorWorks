@@ -6,35 +6,49 @@
 
 /* --- Design Tokens --- */
 :root {
-  /* Dark backgrounds (layered for depth) */
+  /* Dark anchor tones (hero, footer, CTA) */
   --carbon-black: #0a0c0f;
   --carbon: #12151a;
-  --carbon-soft: #1a1e25;
-  --carbon-lift: #222730;
-  --carbon-line: #2d333d;
+  --carbon-deep: #1a1e25;
+
+  /* Medium stone tones (content sections) */
+  --stone-dark: #2a2e36;
+  --stone: #363a44;
+  --stone-soft: #404550;
+  --stone-lift: #4a5060;
+
+  /* Card surfaces (sit on top of stone) */
+  --surface: #2e333d;
+  --surface-lift: #383d48;
+  --surface-line: #4d5361;
+
+  /* Legacy support (mapped to new palette) */
+  --carbon-soft: var(--surface);
+  --carbon-lift: var(--surface-lift);
+  --carbon-line: var(--surface-line);
 
   /* Copper accent */
-  --copper: #b56a3a;
-  --copper-bright: #d48354;
-  --copper-deep: #8a4d26;
-  --copper-glow: rgba(181, 106, 58, 0.35);
+  --copper: #c67a4a;
+  --copper-bright: #e09062;
+  --copper-deep: #9e5d30;
+  --copper-glow: rgba(198, 122, 74, 0.35);
 
   /* Text */
-  --text-bright: #f2efe8;
-  --text: #d9d5cc;
-  --text-muted: #9ca1ac;
-  --text-soft: #6d7482;
+  --text-bright: #f5f2eb;
+  --text: #dcd8cf;
+  --text-muted: #aeb3bd;
+  --text-soft: #858b98;
 
   /* Shadows */
-  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.35);
-  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.55);
-  --shadow-deep: 0 28px 70px rgba(0, 0, 0, 0.7);
-  --shadow-copper: 0 4px 16px rgba(181, 106, 58, 0.25);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.3);
+  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-deep: 0 28px 70px rgba(0, 0, 0, 0.6);
+  --shadow-copper: 0 4px 16px rgba(198, 122, 74, 0.3);
 
   /* Texture */
   --carbon-texture:
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.012) 1px, transparent 1.5px),
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.012) 1px, transparent 1.5px);
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.015) 1px, transparent 1.5px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.015) 1px, transparent 1.5px);
 
   /* Type */
   --font-display: 'Bebas Neue', 'Oswald', Impact, sans-serif;
@@ -229,7 +243,7 @@ section { padding: 110px 0; }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
 /* --- Intro Grid --- */
-.intro { background: var(--carbon-black); position: relative; }
+.intro { background: var(--stone-dark); position: relative; }
 .intro::before {
   content: ''; position: absolute; inset: 0;
   background: var(--carbon-texture); background-size: 24px 24px;
@@ -252,7 +266,7 @@ section { padding: 110px 0; }
 .intro-content p { color: var(--text-muted); margin-bottom: 18px; font-size: 1.05rem; }
 
 /* --- Services Grid --- */
-.services { background: var(--carbon); position: relative; }
+.services { background: var(--stone); position: relative; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .service-card {
   background: var(--carbon-soft); border: 1px solid var(--carbon-line);
@@ -282,7 +296,7 @@ section { padding: 110px 0; }
 }
 
 /* --- Pricing Packages --- */
-.packages { background: var(--carbon-black); position: relative; }
+.packages { background: var(--stone-dark); position: relative; }
 .packages::before {
   content: ''; position: absolute; inset: 0;
   background: var(--carbon-texture); background-size: 32px 32px;
@@ -357,8 +371,8 @@ section { padding: 110px 0; }
 
 /* --- Stats Band --- */
 .stats-band {
-  background: var(--carbon); padding: 70px 0;
-  border-top: 1px solid var(--carbon-line); border-bottom: 1px solid var(--carbon-line);
+  background: var(--carbon-deep); padding: 70px 0;
+  border-top: 1px solid var(--surface-line); border-bottom: 1px solid var(--surface-line);
   position: relative; overflow: hidden;
 }
 .stats-band::before {
@@ -384,7 +398,7 @@ section { padding: 110px 0; }
 }
 
 /* --- Gallery --- */
-.gallery { background: var(--carbon-black); }
+.gallery { background: var(--stone); }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .gallery-item {
   position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius);
@@ -396,7 +410,7 @@ section { padding: 110px 0; }
 .gallery-item:hover img { transform: scale(1.06); filter: brightness(1.05); }
 
 /* --- Feature Section --- */
-.feature { background: var(--carbon); overflow: hidden; position: relative; }
+.feature { background: var(--stone-dark); overflow: hidden; position: relative; }
 .feature-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
 .feature-content h2 { margin-bottom: 24px; }
 .feature-content p { color: var(--text-muted); margin-bottom: 18px; font-size: 1.05rem; }
@@ -437,7 +451,7 @@ section { padding: 110px 0; }
 .cta-strip p { color: var(--text-muted); max-width: 580px; margin: 0 auto 36px; font-size: 1.1rem; }
 
 /* --- Booking Page --- */
-.booking-wrap { padding-top: 130px; padding-bottom: 110px; background: var(--carbon-black); min-height: 80vh; }
+.booking-wrap { padding-top: 130px; padding-bottom: 110px; background: var(--stone-dark); min-height: 80vh; }
 .booking-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
 .booking-main h1 { margin-bottom: 16px; }
 .booking-main .lead { margin-bottom: 36px; }
@@ -559,7 +573,7 @@ section { padding: 110px 0; }
 .services-hero h1 { margin-bottom: 20px; color: var(--text-bright); }
 .services-hero .lead { max-width: 700px; margin: 0 auto; }
 
-.process { background: var(--carbon); }
+.process { background: var(--stone); }
 .process-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
   counter-reset: step; margin-top: 20px;
