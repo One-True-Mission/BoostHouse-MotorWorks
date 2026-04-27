@@ -728,12 +728,21 @@ section { padding: 80px 0; }
   padding: 180px 0 100px; background: var(--black);
   border-bottom: 1px solid var(--carbon-line); position: relative; overflow: hidden;
 }
+.about-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/about-hero-bg.jpg');
+  background-size: cover; background-position: center;
+  z-index: 0;
+}
 .about-hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, var(--copper-glow), transparent 55%);
-  opacity: 0.5; pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.45) 55%, rgba(10, 10, 10, 0.55) 100%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.7) 100%),
+    radial-gradient(ellipse at 70% 50%, var(--copper-glow), transparent 55%);
+  z-index: 1; pointer-events: none;
 }
-.about-hero .container { position: relative; z-index: 1; }
+.about-hero .container { position: relative; z-index: 2; }
 .about-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
 .about-hero h1 { margin-bottom: 24px; }
 .about-hero .lead { margin-bottom: 16px; }
