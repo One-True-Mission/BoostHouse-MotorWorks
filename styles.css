@@ -114,7 +114,7 @@ body::before {
 
 /* Divider component - shows fixed background through between sections */
 .divider {
-  height: 90px;
+  height: 140px;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -374,7 +374,7 @@ section { padding: 80px 0; }
 .intro-content p { color: var(--ink-muted); margin-bottom: 18px; font-size: 1.05rem; }
 
 /* --- Services Grid --- */
-.services { background: rgba(212, 209, 204, 0.6); position: relative; }
+.services { background: var(--chrome-dark); position: relative; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .service-card {
   background: var(--carbon-soft); border: 1px solid var(--carbon-line);
@@ -404,7 +404,7 @@ section { padding: 80px 0; }
 }
 
 /* --- Pricing Packages --- */
-.packages { background: rgba(232, 230, 227, 0.62); position: relative; }
+.packages { background: var(--chrome); position: relative; }
 .packages::before {
   content: ''; position: absolute; inset: 0;
   background: var(--carbon-texture); background-size: 32px 32px;
@@ -544,7 +544,7 @@ section { padding: 80px 0; }
 
 /* --- Stats Band --- */
 .stats-band {
-  background: rgba(10, 10, 10, 0.88); padding: 70px 0;
+  background: var(--black); padding: 70px 0;
   border-top: 1px solid var(--surface-line); border-bottom: 1px solid var(--surface-line);
   position: relative; overflow: hidden;
 }
@@ -571,7 +571,7 @@ section { padding: 80px 0; }
 }
 
 /* --- Gallery --- */
-.gallery { background: rgba(212, 209, 204, 0.6); }
+.gallery { background: var(--chrome-dark); }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .gallery-item {
   position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius);
@@ -613,7 +613,7 @@ section { padding: 80px 0; }
 
 /* --- CTA Strip --- */
 .cta-strip {
-  background: rgba(10, 10, 10, 0.95); color: var(--text-bright);
+  background: var(--black); color: var(--text-bright);
   padding: 90px 0; text-align: center; position: relative; overflow: hidden;
   border-top: 1px solid var(--carbon-line); border-bottom: 1px solid var(--carbon-line);
 }
@@ -633,7 +633,7 @@ section { padding: 80px 0; }
 .cta-strip p { color: var(--text-bright); opacity: 0.9; max-width: 580px; margin: 0 auto 36px; font-size: 1.1rem; }
 
 /* --- Booking Page --- */
-.booking-wrap { padding-top: 130px; padding-bottom: 110px; background: rgba(232, 230, 227, 0.62); min-height: 80vh; }
+.booking-wrap { padding-top: 130px; padding-bottom: 110px; background: var(--chrome); min-height: 80vh; }
 .booking-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
 .booking-main h1 { margin-bottom: 16px; }
 .booking-main .lead { margin-bottom: 36px; }
@@ -700,7 +700,7 @@ section { padding: 80px 0; }
 
 /* --- About Page --- */
 .about-hero {
-  padding: 180px 0 100px; background: rgba(10, 10, 10, 0.88);
+  padding: 180px 0 100px; background: var(--black);
   border-bottom: 1px solid var(--carbon-line); position: relative; overflow: hidden;
 }
 .about-hero::before {
@@ -757,7 +757,7 @@ section { padding: 80px 0; }
 .services-hero h1 { margin-bottom: 20px; color: var(--text-bright); }
 .services-hero .lead { max-width: 700px; margin: 0 auto; }
 
-.process { background: rgba(212, 209, 204, 0.6); }
+.process { background: var(--chrome-dark); }
 .process-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
   counter-reset: step; margin-top: 20px;
@@ -785,7 +785,7 @@ section { padding: 80px 0; }
 
 /* --- Footer --- */
 .footer {
-  background: rgba(10, 10, 10, 0.97); color: var(--text-bright);
+  background: var(--black); color: var(--text-bright);
   padding: 80px 0 30px; border-top: 1px solid var(--black-lift);
 }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
@@ -825,7 +825,7 @@ section { padding: 80px 0; }
 /* --- Thank You --- */
 .thankyou {
   min-height: 90vh; display: flex; align-items: center; justify-content: center;
-  text-align: center; padding: 180px 0 110px; background: rgba(10, 10, 10, 0.88);
+  text-align: center; padding: 180px 0 110px; background: var(--black);
   position: relative; overflow: hidden;
 }
 .thankyou::before {
