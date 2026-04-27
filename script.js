@@ -120,4 +120,95 @@ document.addEventListener('DOMContentLoaded', function () {
     fadeEls.forEach(function (el) { obs.observe(el); });
   }
 
+  /* --- Package Carousel --- */
+  var carousels = document.querySelectorAll('.package-carousel');
+  carousels.forEach(function (carousel) {
+    var track = carousel.querySelector('.package-carousel-track');
+    var cards = track ? track.querySelectorAll('.package-card') : [];
+    var prevBtn = carousel.querySelector('.package-carousel-btn.prev');
+    var nextBtn = carousel.querySelector('.package-carousel-btn.next');
+    var dotsContainer = carousel.querySelector('.package-carousel-dots');
+    if (!track || cards.length === 0) return;
+
+    var currentIndex = 0;
+
+    function getVisibleCount() {
+      var w = window.innerWidth;
+      if (w <= 560) return 1;
+      if (w <= 900) return 2;
+      if (w <= 1100) return 3;
+      return 4;
+    }
+
+    function getMaxIndex() {
+      return Math.max(0, cards.length - getVisibleCount());
+    }
+
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      var max = getMaxIndex();
+      for (var i = 0; i <= max; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'package-carousel-dot';
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.setAttribute('data-index', i);
+        dot.addEventListener('click', function (e) {
+          var idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+          currentIndex = idx;
+          update();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function update() {
+      var visible = getVisibleCount();
+      var max = getMaxIndex();
+      if (currentIndex > max) currentIndex = max;
+      if (currentIndex < 0) currentIndex = 0;
+
+      var card = cards[0];
+      var cardWidth = card.offsetWidth;
+      var gap = 20;
+      var offset = currentIndex * (cardWidth + gap);
+      track.style.transform = 'translateX(-' + offset + 'px)';
+
+      if (prevBtn) prevBtn.disabled = currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = currentIndex >= max;
+
+      if (dotsContainer) {
+        var dots = dotsContainer.querySelectorAll('.package-carousel-dot');
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('is-active', i === currentIndex);
+        });
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        currentIndex--;
+        update();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        currentIndex++;
+        update();
+      });
+    }
+
+    buildDots();
+    update();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        buildDots();
+        update();
+      }, 150);
+    });
+  });
+
 });
