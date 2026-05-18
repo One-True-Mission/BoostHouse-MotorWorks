@@ -38,12 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* --- Calendly booking widget --- */
-  /*
-    Replace YOUR_CALENDLY_URL_HERE with your Calendly scheduling link.
-    Example: https://calendly.com/boosthouse-motorworks/consultation
-    Free tier works for one event type. Paid tier for multiple.
-  */
-  var calendlyUrl = 'YOUR_CALENDLY_URL_HERE';
+  var calendlyUrl = 'https://calendly.com/boosthousemotorworks-info/30min';
   var bookingTarget = document.getElementById('calendly-inline');
   if (bookingTarget) {
     if (calendlyUrl && calendlyUrl.indexOf('calendly.com') !== -1) {
