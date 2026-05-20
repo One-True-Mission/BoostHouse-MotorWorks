@@ -385,12 +385,23 @@ section { padding: 80px 0; }
   position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius);
   overflow: hidden; box-shadow: var(--shadow-deep);
 }
-.intro-media img { width: 100%; height: 100%; object-fit: cover; }
+.intro-media img,
+.intro-media video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.intro-media video {
+  background: var(--black);
+}
+/* Landscape variant for sections where a wider photo fits better */
+.intro-media--landscape {
+  aspect-ratio: 4 / 3;
+}
 .intro-badge {
   position: absolute; top: 20px; left: 20px;
   background: var(--red); color: var(--text-bright); padding: 10px 18px; border-radius: 4px;
   font-family: var(--font-body); font-size: 0.72rem; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase; box-shadow: var(--shadow-copper);
+  z-index: 2;
 }
 .intro-content h2 { margin-bottom: 24px; }
 .intro-content p { color: var(--ink-muted); margin-bottom: 18px; font-size: 1.05rem; }
@@ -597,6 +608,60 @@ section { padding: 80px 0; }
   color: var(--copper-bright); font-family: var(--font-display);
   font-size: 1.25rem; letter-spacing: 0.04em; text-transform: uppercase;
   display: block; margin-bottom: 4px;
+}
+
+/* Clickable CTA variant of custom-note */
+.custom-note--cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 32px;
+  border-style: solid;
+  border-width: 2px;
+  background: var(--surface-lift);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.custom-note--cta:hover {
+  background: var(--chrome-light);
+  border-color: var(--red-bright);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+.custom-note--cta strong {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+.custom-note--cta span {
+  display: block;
+  max-width: 580px;
+  color: var(--ink-muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.custom-note-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 15px 32px;
+  background: var(--red);
+  color: var(--text-bright) !important;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-copper);
+  max-width: none !important;
+  transition: all 0.25s ease;
+}
+.custom-note--cta:hover .custom-note-btn {
+  background: var(--red-bright);
+  box-shadow: 0 8px 24px rgba(181, 106, 58, 0.45);
 }
 
 /* --- Stats Band (now a contained card) --- */
