@@ -115,6 +115,49 @@ document.addEventListener('DOMContentLoaded', function () {
     fadeEls.forEach(function (el) { obs.observe(el); });
   }
 
+  /* --- Philosophy video: autoplay 2s after scrolled into view --- */
+  var philosophyVideo = document.getElementById('philosophy-video');
+  if (philosophyVideo) {
+    // When the video ends naturally, reset back to the poster image
+    // (default browser behavior shows last frame, which is usually dark)
+    philosophyVideo.addEventListener('ended', function () {
+      philosophyVideo.currentTime = 0;
+      philosophyVideo.load();
+    });
+
+    // Use IntersectionObserver to trigger autoplay 2 seconds after the
+    // video scrolls into view
+    if ('IntersectionObserver' in window) {
+      var hasPlayed = false;
+      var playTimer = null;
+
+      var videoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !hasPlayed) {
+            // Section is in view, start the 2-second countdown
+            playTimer = setTimeout(function () {
+              // Try to play; browsers require muted autoplay
+              var playPromise = philosophyVideo.play();
+              if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(function () {
+                  // Autoplay blocked by browser; do nothing, user can click play
+                });
+              }
+              hasPlayed = true;
+              videoObserver.unobserve(philosophyVideo);
+            }, 2000);
+          } else if (!entry.isIntersecting && playTimer && !hasPlayed) {
+            // Visitor scrolled away before the 2s mark, cancel the timer
+            clearTimeout(playTimer);
+            playTimer = null;
+          }
+        });
+      }, { threshold: 0.5 });
+
+      videoObserver.observe(philosophyVideo);
+    }
+  }
+
   /* --- Package Carousel --- */
   var carousels = document.querySelectorAll('.package-carousel');
   carousels.forEach(function (carousel) {
