@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="book">
@@ -37,80 +38,58 @@
 
     <div class="booking-intro" style="max-width: 900px; margin-bottom: 40px;">
       <span class="eyebrow">Book Online</span>
-      <h1>Let's talk about your build.</h1>
-      <p class="lead">Pick a time that works for you and we'll call to walk through your goals, your platform, and what a proper build looks like for your setup. Prefer to write? There's a form below.</p>
+      <h1>Let's talk about your car.</h1>
+      <p class="lead">Schedule a 30-minute call to walk through what you need. Builds, tune-ups, diagnostics, maintenance, whatever's on your list. Prefer to write? There's a form below.</p>
     </div>
 
-    <div class="booking-grid">
+    <!-- Top row: Schedule card + Reach Us Directly side-by-side -->
+    <div class="booking-top">
 
-      <div class="booking-main">
-        <!-- Calendly inline widget (renders via JS) -->
-        <div class="booking-widget">
-          <div id="calendly-inline"></div>
+      <!-- Schedule Card (Calendly Popup Trigger) -->
+      <div class="bh-schedule-card">
+        <div class="bh-schedule-header-row">
+          <div class="bh-schedule-num">01</div>
+          <div class="bh-schedule-eyebrow">Recommended</div>
         </div>
 
-        <!-- Contact form -->
-        <div style="margin-top: 50px;">
-          <span class="eyebrow">Or Send A Message</span>
-          <h2 style="margin-bottom: 24px;">Not ready for a call?</h2>
-          <p style="color: var(--ink-muted); margin-bottom: 28px;">Drop your details and what you're thinking about. We'll get back the same day during shop hours.</p>
+        <h2 class="bh-schedule-title">Book a <span>Consultation Call</span></h2>
 
-          <form class="contact-form" action="https://formspree.io/f/meedoqnj" method="POST">
-            <input type="hidden" name="_subject" value="New inquiry from BoostHouse Motor Works website" />
-            <input type="hidden" name="_cc" value="boosthousemotorworksinfo@gmail.com" />
-            <input type="hidden" name="_next" value="thank-you.html" />
+        <p class="bh-schedule-desc">A 30-minute call with our master tech to talk through what you need. Performance builds, regular maintenance, diagnostics, the works. Instant calendar confirmation, no deposit, no pressure.</p>
 
-            <div class="form-grid-2">
-              <div class="form-row">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-row">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" />
-              </div>
+        <ul class="bh-schedule-bullets">
+          <li>
+            <div class="bh-schedule-bullet-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+            <div class="bh-schedule-bullet-text">
+              <div class="bh-schedule-bullet-title">30-Minute Call</div>
+              <div class="bh-schedule-bullet-sub">Enough time to actually cover what you need.</div>
             </div>
-
-            <div class="form-grid-2">
-              <div class="form-row">
-                <label for="platform">Platform</label>
-                <select id="platform" name="platform">
-                  <option value="">Select one</option>
-                  <option value="EJ25">EJ25 (Subaru 2.5L)</option>
-                  <option value="FA20DIT">FA20DIT (WRX)</option>
-                  <option value="Other Subaru">Other Subaru</option>
-                  <option value="Non-Subaru">Non-Subaru</option>
-                  <option value="Unsure">Not sure yet</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="interest">Interested In</label>
-                <select id="interest" name="interest">
-                  <option value="">Select one</option>
-                  <option value="Short Block">Short Block Build</option>
-                  <option value="Long Block">Long Block Build</option>
-                  <option value="Closed Deck">Closed Deck Conversion</option>
-                  <option value="Custom">Custom Build</option>
-                  <option value="Rebuild">Rebuild / Refresh</option>
-                  <option value="General">General Question</option>
-                </select>
-              </div>
+          </li>
+          <li>
+            <div class="bh-schedule-bullet-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
-
-            <div class="form-row">
-              <label for="message">Tell us about your build</label>
-              <textarea id="message" name="message" placeholder="Target horsepower, current setup, timeline, questions, whatever helps us get you a useful answer."></textarea>
+            <div class="bh-schedule-bullet-text">
+              <div class="bh-schedule-bullet-title">Master Tech On The Line</div>
+              <div class="bh-schedule-bullet-sub">No sales reps, no call centers. You talk to the BoostHouse master tech.</div>
             </div>
+          </li>
+          <li>
+            <div class="bh-schedule-bullet-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="bh-schedule-bullet-text">
+              <div class="bh-schedule-bullet-title">Honest Quote, No Pressure</div>
+              <div class="bh-schedule-bullet-sub">We tell you what your setup actually needs, not what makes us money.</div>
+            </div>
+          </li>
+        </ul>
 
-            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-          </form>
-        </div>
-
+        <button type="button" class="bh-schedule-btn" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/boosthousemotorworks-info/30min?hide_gdpr_banner=1&background_color=141414&text_color=f8f6f3&primary_color=c52a2d'}); return false;">
+          <span>Schedule My Call</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
       </div>
 
       <!-- Info Panel -->
@@ -148,6 +127,70 @@
         </div>
       </aside>
 
+    </div>
+
+    <!-- Bottom: form (full width) -->
+    <div class="form-section">
+      <span class="eyebrow">Or Send A Message</span>
+      <h2>Not ready for a call?</h2>
+      <p style="color: var(--ink-muted); margin-bottom: 28px;">Drop your details and what you're thinking about. We'll get back the same day during shop hours.</p>
+
+      <form class="contact-form" action="https://formspree.io/f/meedoqnj" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from BoostHouse Motor Works website" />
+        <input type="hidden" name="_cc" value="boosthousemotorworksinfo@gmail.com" />
+        <input type="hidden" name="_next" value="thank-you.html" />
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="platform">Platform</label>
+            <select id="platform" name="platform">
+              <option value="">Select one</option>
+              <option value="EJ25">EJ25 (Subaru 2.5L)</option>
+              <option value="FA20DIT">FA20DIT (WRX)</option>
+              <option value="Other Subaru">Other Subaru</option>
+              <option value="Non-Subaru">Non-Subaru</option>
+              <option value="Unsure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="interest">Interested In</label>
+            <select id="interest" name="interest">
+              <option value="">Select one</option>
+              <option value="Short Block">Short Block Build</option>
+              <option value="Long Block">Long Block Build</option>
+              <option value="Closed Deck">Closed Deck Conversion</option>
+              <option value="Custom">Custom Build</option>
+              <option value="Rebuild">Rebuild / Refresh</option>
+              <option value="Maintenance">Tune-Up / Maintenance</option>
+              <option value="Diagnostics">Diagnostics</option>
+              <option value="General">General Question</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Tell us what you need</label>
+          <textarea id="message" name="message" placeholder="Current setup, what you're hoping to get done, timeline, questions, whatever helps us get you a useful answer."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
@@ -213,5 +256,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>

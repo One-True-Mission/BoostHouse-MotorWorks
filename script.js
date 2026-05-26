@@ -37,69 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
     marqueeTrack.innerHTML = originalItems + originalItems;
   }
 
-  /* --- Calendly booking widget --- */
-  var calendlyUrl = 'https://calendly.com/boosthousemotorworks-info/30min';
-  var bookingTarget = document.getElementById('calendly-inline');
-  if (bookingTarget) {
-    if (calendlyUrl && calendlyUrl.indexOf('calendly.com') !== -1) {
-      // Load Calendly inline widget
-      var script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.head.appendChild(script);
-
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://assets.calendly.com/assets/external/widget.css';
-      document.head.appendChild(link);
-
-      bookingTarget.innerHTML =
-        '<div class="calendly-inline-widget" data-url="' + calendlyUrl + '" style="min-width:320px;height:680px;"></div>';
-    } else {
-      // Fallback while Calendly is not yet configured
-      bookingTarget.innerHTML =
-        '<div class="booking-fallback">' +
-          '<h3>Booking Coming Soon</h3>' +
-          '<p>Our online booking system is being set up. For now, call us or send a message and we will get you on the schedule.</p>' +
-          '<a href="tel:5123650672" class="btn btn-primary">Call (512) 365-0672</a>' +
-        '</div>';
-    }
-  }
-
-  /* --- Popup Calendly button (optional, used on other pages) --- */
-  var popupButtons = document.querySelectorAll('[data-calendly-popup]');
-  if (popupButtons.length && calendlyUrl && calendlyUrl.indexOf('calendly.com') !== -1) {
-    var popupScript = document.createElement('script');
-    popupScript.src = 'https://assets.calendly.com/assets/external/widget.js';
-    popupScript.async = true;
-    document.head.appendChild(popupScript);
-
-    var popupLink = document.createElement('link');
-    popupLink.rel = 'stylesheet';
-    popupLink.href = 'https://assets.calendly.com/assets/external/widget.css';
-    document.head.appendChild(popupLink);
-
-    popupButtons.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (window.Calendly && window.Calendly.initPopupWidget) {
-          window.Calendly.initPopupWidget({ url: calendlyUrl });
-        } else {
-          window.location.href = 'book.html';
-        }
-      });
-    });
-  } else if (popupButtons.length) {
-    // If no Calendly set, popup buttons just go to book page
-    popupButtons.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        if (btn.tagName !== 'A') {
-          e.preventDefault();
-          window.location.href = 'book.html';
-        }
-      });
-    });
-  }
+  /* --- Calendly booking widget ---
+     Note: Calendly's widget.js is loaded directly in book.html.
+     The schedule button uses an inline onclick handler that calls
+     Calendly.initPopupWidget directly. No JS needed here. */
 
   /* --- Scroll fade-in (subtle) --- */
   if ('IntersectionObserver' in window) {
